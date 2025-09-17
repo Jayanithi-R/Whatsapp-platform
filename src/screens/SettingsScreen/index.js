@@ -303,7 +303,7 @@ const SettingsScreen = () => {
             </Typography>
 
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "45%", lg: "49%", xl: "43%", sm: "43%" } }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "47%", lg: "49%", xl: "43%", sm: "100%" } }}>
                 <Paper style={{ padding: '1.5rem', backgroundColor: '#f8fafc' }}>
                   <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
                     Webhook Settings
@@ -387,7 +387,7 @@ const SettingsScreen = () => {
             <Grid
               container
               spacing={3}
-              alignItems="stretch"
+              // alignItems="stretch"
               sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "column", lg: "row" } }}
             >
               {/* Webhook Testing Tool (left) */}
@@ -401,6 +401,8 @@ const SettingsScreen = () => {
                     p: 3,
                     backgroundColor: "#f8fafc",
                     height: "100%", // equal height
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
                   <Typography
@@ -411,13 +413,13 @@ const SettingsScreen = () => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ color: "#6b7280", mb: 2 }}
+                    sx={{ color: "#6b7280", mb: 2,}}
                   >
                     Simulate webhook callbacks for testing integrations
                   </Typography>
                   <Button
                     variant="contained"
-                    sx={{ backgroundColor: "#10b981", color: "white" }}
+                    sx={{ backgroundColor: "#10b981", color: "white", mt: "auto",  }}
                     onClick={() => setWebhookTestDialog(true)}
                   >
                     Open Webhook Tester
@@ -436,23 +438,24 @@ const SettingsScreen = () => {
                     p: 3,
                     backgroundColor: "#f0fdf4",
                     height: "100%", // equal height
+                    flexDirection:"column",
                   }}
                 >
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold", mb: 2 }}
+                    sx={{ fontWeight: "bold", mb: 2,  }}
                   >
                     Sandbox Campaign Simulator
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ color: "#6b7280", mb: 2 }}
+                    sx={{ color: "#6b7280", mb: 2, }}
                   >
                     Preview campaign delivery, cost estimation, and risk analysis
                   </Typography>
                   <Button
                     variant="contained"
-                    sx={{ backgroundColor: "#3b82f6", color: "white" }}
+                    sx={{ backgroundColor: "#3b82f6", color: "white", mt: "auto" }}
                     onClick={() =>
                       window.open("https://your-simulator-url.com", "_blank")
                     }
