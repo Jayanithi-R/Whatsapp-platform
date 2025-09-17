@@ -104,8 +104,9 @@ const SettingsScreen = () => {
               </Button>
             </Box>
 
-            <TableContainer style={{ overflowX: 'auto', maxHeight: '400px', tableLayout: 'fixed' }}>
-              <Table stickyHeader>
+            <TableContainer style={{ overflowX: 'auto', maxHeight: '400px',  }}>
+
+              <Table stickyHeader sx={{ minWidth: '600px' }}>
                 <TableHead>
                   <TableRow style={{ backgroundColor: '#f8fafc', minHeight: '280px' }}>
                     <TableCell style={{ fontWeight: 'bold' }}>Name</TableCell>
@@ -303,13 +304,13 @@ const SettingsScreen = () => {
             </Typography>
 
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "47%", lg: "49%", xl: "43%", sm: "100%" } }}>
-                <Paper style={{ padding: '1.5rem', backgroundColor: '#f8fafc' }}>
-                  <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
+                <Paper sx={{ p: 3, backgroundColor: '#f8fafc' }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                     Webhook Settings
                   </Typography>
 
-                  <Box style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <TextField
                       fullWidth
                       label="Webhook URL"
@@ -331,9 +332,9 @@ const SettingsScreen = () => {
 
               </Grid>
 
-              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '400px', lg: '540px', xl: '400px' } }}>
-                <Paper style={{ padding: '1.5rem', backgroundColor: '#f0fdf4', }}>
-                  <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '48%', xl: '43%', sm: '48%' } }}>
+                <Paper sx={{ p: 3, backgroundColor: '#f0fdf4' }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
                     Event Types
                   </Typography>
 
@@ -387,15 +388,15 @@ const SettingsScreen = () => {
             <Grid
               container
               spacing={3}
-              // alignItems="stretch"
-              sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "column", lg: "row" } }}
             >
               {/* Webhook Testing Tool (left) */}
               <Grid
                 item
                 xs={12}
                 md={6}
+                sx={{ width: { xs: '100%', md: '47%', lg: '47%', xl: '43%', sm: '48%' } }}
               >
+              
                 <Paper
                   sx={{
                     p: 3,
@@ -432,6 +433,7 @@ const SettingsScreen = () => {
                 item
                 xs={12}
                 md={6}
+                 sx={{ width: { xs: '100%', md: '48%', lg: '47%', xl: '43%', sm: '48%' } }}
               >
                 <Paper
                   sx={{
@@ -439,6 +441,7 @@ const SettingsScreen = () => {
                     backgroundColor: "#f0fdf4",
                     height: "100%", // equal height
                     flexDirection:"column",
+                    display:"flex",
                   }}
                 >
                   <Typography
