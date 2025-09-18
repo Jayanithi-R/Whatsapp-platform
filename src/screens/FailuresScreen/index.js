@@ -29,8 +29,6 @@ import {
   Visibility,
   FileDownload,
   Search,
-  FilterList,
-  TrendingUp
 } from '@mui/icons-material';
 import { useData } from '../../contexts/DataContext';
 
@@ -86,25 +84,47 @@ const FailuresScreen = () => {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'center' }, mb: 3, flexDirection: { xs: 'column', md: 'row' } }}>
-        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1f2937', mb: { xs: 2, md: 0 } }}>
-          Failure Management
-        </Typography>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Button
-            startIcon={<FileDownload />}
-            variant="outlined"
-            style={{ borderColor: '#10b981', color: '#10b981' }}
+      {/* Header with responsive buttons */}
+      <Box mb={3}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'flex-start', sm: 'center' },
+            justifyContent: 'space-between',
+            gap: 2,
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: 'bold', color: '#1f2937' }}
           >
-            Export
-          </Button>
-          <Button
-            startIcon={<Refresh />}
-            variant="contained"
-            style={{ backgroundColor: '#10b981', color: 'white' }}
+            Failure Management
+          </Typography>
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 2,
+              mt: { xs: 2, sm: 0 },
+            }}
           >
-            Refresh
-          </Button>
+            <Button
+              startIcon={<FileDownload />}
+              variant="outlined"
+              sx={{ borderColor: '#10b981', color: '#10b981' }}
+            >
+              Export
+            </Button>
+            <Button
+              startIcon={<Refresh />}
+              variant="contained"
+              sx={{ backgroundColor: '#10b981', color: 'white' }}
+            >
+              Refresh
+            </Button>
+          </Box>
         </Box>
       </Box>
 

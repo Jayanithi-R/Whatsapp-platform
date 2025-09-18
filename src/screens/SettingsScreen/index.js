@@ -39,7 +39,6 @@ import {
 } from '@mui/icons-material';
 import { useData } from '../../contexts/DataContext';
 
-
 const SettingsScreen = () => {
   const { apiKeys, pricing, syncPricing } = useData();
   const [activeTab, setActiveTab] = useState(0);
@@ -104,8 +103,7 @@ const SettingsScreen = () => {
               </Button>
             </Box>
 
-            <TableContainer style={{ overflowX: 'auto', maxHeight: '400px',  }}>
-
+            <TableContainer style={{ overflowX: 'auto', maxHeight: '400px' }}>
               <Table stickyHeader sx={{ minWidth: '600px' }}>
                 <TableHead>
                   <TableRow style={{ backgroundColor: '#f8fafc', minHeight: '280px' }}>
@@ -191,13 +189,11 @@ const SettingsScreen = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              flexDirection={{ xs: "column", sm: "row" }} // mobile = column, desktop = row
+              flexDirection={{ xs: "column", sm: "row" }}
               gap={1.5}
               sx={{ mb: 3 }}
             >
-              <Typography variant="h6"
-                textAlign={{ xs: "center", md: "left" }} // center on mobile, left on desktop
-              >
+              <Typography variant="h6" textAlign={{ xs: "center", md: "left" }}>
                 Pricing Configuration
               </Typography>
 
@@ -223,8 +219,7 @@ const SettingsScreen = () => {
 
             {/* Meta Pricing */}
             <Grid container spacing={3}>
-              {/* Meta Pricing (Base Rates) */}
-              <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "49%", lg: "49%", xl: "49%", sm: "100%" } }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
                 <Paper
                   sx={{
                     p: 3,
@@ -241,10 +236,7 @@ const SettingsScreen = () => {
 
                   <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
                     {Object.entries(pricing.rates).map(([country, rate]) => (
-                      <Box
-                        key={country}
-                        sx={{ display: "flex", justifyContent: "space-between" }}
-                      >
+                      <Box key={country} sx={{ display: "flex", justifyContent: "space-between" }}>
                         <Typography variant="body2">{country}</Typography>
                         <Typography variant="body2" sx={{ fontWeight: "bold" }}>
                           ${rate.toFixed(3)}
@@ -255,10 +247,8 @@ const SettingsScreen = () => {
                 </Paper>
               </Grid>
 
-              {/* Distribution Pricing (Customer Rates) */}
-              <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "48%", lg: "48.5%", xl: "49%", sm: "100%" } }}>
-                <Box
-                >
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
+                <Box>
                   <Paper
                     sx={{
                       p: 3,
@@ -275,15 +265,9 @@ const SettingsScreen = () => {
 
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
                       {Object.entries(pricing.rates).map(([country, rate]) => (
-                        <Box
-                          key={country}
-                          sx={{ display: "flex", justifyContent: "space-between" }}
-                        >
+                        <Box key={country} sx={{ display: "flex", justifyContent: "space-between" }}>
                           <Typography variant="body2">{country}</Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{ fontWeight: "bold", color: "#10b981" }}
-                          >
+                          <Typography variant="body2" sx={{ fontWeight: "bold", color: "#10b981" }}>
                             ${(rate * 1.2).toFixed(3)}
                           </Typography>
                         </Box>
@@ -299,9 +283,34 @@ const SettingsScreen = () => {
         {/* Webhooks Tab */}
         <TabPanel value={activeTab} index={2}>
           <Box style={{ padding: '2rem' }}>
-            <Typography variant="h6" style={{ fontWeight: 'bold', marginBottom: '2rem' }}>
-              Webhook Configuration
-            </Typography>
+            {/* Heading + Button */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mb: 3,
+                flexWrap: "wrap",
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                Webhook Configuration
+              </Typography>
+
+              <Box sx={{ ml: "auto", mt: { xs: 1, sm: 0 } }}>
+                <Button
+                  startIcon={<Science />}
+                  variant="outlined"
+                  onClick={() => setWebhookTestDialog(true)}
+                  sx={{
+                    borderColor: "#10b981",
+                    color: "#10b981",
+                  }}
+                >
+                  Test Webhook
+                </Button>
+              </Box>
+            </Box>
 
             <Grid container spacing={3}>
               <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
@@ -318,18 +327,10 @@ const SettingsScreen = () => {
                       variant="outlined"
                     />
 
-                    <FormControlLabel
-                      control={<Switch defaultChecked />}
-                      label="Enable webhook notifications"
-                    />
-
-                    <FormControlLabel
-                      control={<Switch defaultChecked />}
-                      label="Verify webhook signatures"
-                    />
+                    <FormControlLabel control={<Switch defaultChecked />} label="Enable webhook notifications" />
+                    <FormControlLabel control={<Switch defaultChecked />} label="Verify webhook signatures" />
                   </Box>
                 </Paper>
-
               </Grid>
 
               <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '48%', xl: '43%', sm: '48%' } }}>
@@ -339,88 +340,44 @@ const SettingsScreen = () => {
                   </Typography>
 
                   <Box style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <FormControlLabel
-                      control={<Switch defaultChecked />}
-                      label="Message delivered"
-                    />
-                    <FormControlLabel
-                      control={<Switch defaultChecked />}
-                      label="Message read"
-                    />
-                    <FormControlLabel
-                      control={<Switch defaultChecked />}
-                      label="Message failed"
-                    />
-                    <FormControlLabel
-                      control={<Switch />}
-                      label="Template status changed"
-                    />
+                    <FormControlLabel control={<Switch defaultChecked />} label="Message delivered" />
+                    <FormControlLabel control={<Switch defaultChecked />} label="Message read" />
+                    <FormControlLabel control={<Switch defaultChecked />} label="Message failed" />
+                    <FormControlLabel control={<Switch />} label="Template status changed" />
                   </Box>
                 </Paper>
               </Grid>
             </Grid>
-
-            <Box style={{ marginTop: '2rem' }}>
-              <Button
-                startIcon={<Science />}
-                variant="outlined"
-                onClick={() => setWebhookTestDialog(true)}
-                style={{ borderColor: '#10b981', color: '#10b981' }}
-              >
-                Test Webhook
-              </Button>
-            </Box>
           </Box>
         </TabPanel>
 
         {/* Testing Tools Tab */}
-        {/* Testing Tools Tab */}
         <TabPanel value={activeTab} index={3}>
           <Box sx={{ p: 3 }}>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: "bold", mb: 3 }}
-            >
+            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 3 }}>
               Testing & Simulation Tools
             </Typography>
 
-            {/* Responsive Grid */}
-            <Grid
-              container
-              spacing={3}
-            >
-              {/* Webhook Testing Tool (left) */}
-              <Grid
-                item
-                xs={12}
-                md={6}
-                sx={{ width: { xs: '100%', md: '47%', lg: '47%', xl: '43%', sm: '48%' } }}
-              >
-              
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '47%', lg: '47%', xl: '43%', sm: '48%' } }}>
                 <Paper
                   sx={{
                     p: 3,
                     backgroundColor: "#f8fafc",
-                    height: "100%", // equal height
+                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
                   }}
                 >
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ fontWeight: "bold", mb: 2 }}
-                  >
+                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 2 }}>
                     Webhook Testing Tool
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "#6b7280", mb: 2,}}
-                  >
+                  <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
                     Simulate webhook callbacks for testing integrations
                   </Typography>
                   <Button
                     variant="contained"
-                    sx={{ backgroundColor: "#10b981", color: "white", mt: "auto",  }}
+                    sx={{ backgroundColor: "#10b981", color: "white", mt: "auto" }}
                     onClick={() => setWebhookTestDialog(true)}
                   >
                     Open Webhook Tester
@@ -428,40 +385,26 @@ const SettingsScreen = () => {
                 </Paper>
               </Grid>
 
-              {/* Sandbox Campaign Simulator (right) */}
-              <Grid
-                item
-                xs={12}
-                md={6}
-                 sx={{ width: { xs: '100%', md: '48%', lg: '47%', xl: '43%', sm: '48%' } }}
-              >
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '48%', lg: '47%', xl: '43%', sm: '48%' } }}>
                 <Paper
                   sx={{
                     p: 3,
                     backgroundColor: "#f0fdf4",
-                    height: "100%", // equal height
-                    flexDirection:"column",
-                    display:"flex",
+                    height: "100%",
+                    flexDirection: "column",
+                    display: "flex",
                   }}
                 >
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ fontWeight: "bold", mb: 2,  }}
-                  >
+                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 2 }}>
                     Sandbox Campaign Simulator
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "#6b7280", mb: 2, }}
-                  >
+                  <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
                     Preview campaign delivery, cost estimation, and risk analysis
                   </Typography>
                   <Button
                     variant="contained"
                     sx={{ backgroundColor: "#3b82f6", color: "white", mt: "auto" }}
-                    onClick={() =>
-                      window.open("https://your-simulator-url.com", "_blank")
-                    }
+                    onClick={() => window.open("https://your-simulator-url.com", "_blank")}
                   >
                     Open Simulator
                   </Button>
@@ -470,7 +413,6 @@ const SettingsScreen = () => {
             </Grid>
           </Box>
         </TabPanel>
-
       </Paper>
 
       {/* Add API Key Dialog */}
@@ -478,7 +420,7 @@ const SettingsScreen = () => {
         <DialogTitle>Add New API Key</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} style={{ marginTop: '0.5rem' }}>
-            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
+            <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
                 label="Key Name"
@@ -486,7 +428,7 @@ const SettingsScreen = () => {
                 onChange={(e) => setNewApiKey({ ...newApiKey, name: e.target.value })}
               />
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
+            <Grid item xs={12} md={6}>
               <FormControl fullWidth>
                 <InputLabel>Environment</InputLabel>
                 <Select
@@ -503,11 +445,7 @@ const SettingsScreen = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setAddKeyDialog(false)}>Cancel</Button>
-          <Button
-            onClick={handleAddApiKey}
-            variant="contained"
-            style={{ backgroundColor: '#10b981', color: 'white' }}
-          >
+          <Button onClick={handleAddApiKey} variant="contained" style={{ backgroundColor: '#10b981', color: 'white' }}>
             Generate Key
           </Button>
         </DialogActions>
@@ -518,47 +456,28 @@ const SettingsScreen = () => {
         <DialogTitle>Webhook Testing Tool</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} style={{ marginTop: '0.5rem' }}>
-            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
+            <Grid item xs={12} md={6}>
               <FormControl fullWidth>
                 <InputLabel>Event Type</InputLabel>
-                <Select defaultValue="delivered" label="Event Type">
-                  <MenuItem value="delivered">Message Delivered</MenuItem>
-                  <MenuItem value="read">Message Read</MenuItem>
-                  <MenuItem value="failed">Message Failed</MenuItem>
+                <Select defaultValue="message_delivered" label="Event Type">
+                  <MenuItem value="message_delivered">Message Delivered</MenuItem>
+                  <MenuItem value="message_read">Message Read</MenuItem>
+                  <MenuItem value="message_failed">Message Failed</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
-              <TextField
-                fullWidth
-                label="Message ID"
-                value="MSG001"
-              />
+            <Grid item xs={12} md={6}>
+              <TextField fullWidth label="Recipient" placeholder="+1XXXXXXXXXX" />
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
-              <TextField
-                fullWidth
-                multiline
-                rows={6}
-                label="Webhook Payload (JSON)"
-                value={JSON.stringify({
-                  event: "message.delivered",
-                  messageId: "MSG001",
-                  timestamp: new Date().toISOString(),
-                  customerId: "CUST001"
-                }, null, 2)}
-              />
+            <Grid item xs={12}>
+              <TextField fullWidth label="Payload" multiline rows={4} defaultValue='{"message":"Hello World"}' />
             </Grid>
           </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setWebhookTestDialog(false)}>Cancel</Button>
-          <Button
-            onClick={handleWebhookTest}
-            variant="contained"
-            style={{ backgroundColor: '#10b981', color: 'white' }}
-          >
-            Send Test Webhook
+          <Button onClick={handleWebhookTest} variant="contained" style={{ backgroundColor: '#10b981', color: 'white' }}>
+            Send Test Event
           </Button>
         </DialogActions>
       </Dialog>

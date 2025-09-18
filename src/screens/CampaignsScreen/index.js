@@ -31,7 +31,6 @@ import {
   Stop,
   Edit,
   Visibility,
-  Schedule
 } from '@mui/icons-material';
 import { useData } from '../../contexts/DataContext';
 
@@ -93,23 +92,42 @@ const CampaignsScreen = () => {
 
   return (
     <Box>
-      <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <Typography variant="h4" style={{ fontWeight: 'bold', color: '#1f2937' }}>
-          Campaign Management
-        </Typography>
-        <Button
-          startIcon={<Add />}
-          variant="contained"
-          onClick={() => setAddDialogOpen(true)}
-          style={{ backgroundColor: '#10b981', color: 'white' }}
+      {/* Header with responsive button */}
+      <Box mb={4}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" }, // stack only on mobile
+            alignItems: { xs: "flex-start", sm: "center" },
+            justifyContent: "space-between",
+            gap: 2
+          }}
         >
-          Create Campaign
-        </Button>
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: "bold", color: "#1f2937" }}
+          >
+            Campaign Management
+          </Typography>
+
+          <Button
+            startIcon={<Add />}
+            variant="contained"
+            onClick={() => setAddDialogOpen(true)}
+            sx={{
+              backgroundColor: "#10b981",
+              color: "white",
+              mt: { xs: 2, sm: 0 } // spacing only on mobile
+            }}
+          >
+            Create Campaign
+          </Button>
+        </Box>
       </Box>
 
       {/* Campaign Stats */}
       <Grid container spacing={3} style={{ marginBottom: '2rem' }}>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#10b981' }}>
               {campaigns.filter(c => c.status === 'active').length}
@@ -119,7 +137,7 @@ const CampaignsScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#3b82f6' }}>
               {campaigns.reduce((sum, c) => sum + (c.sent || 0), 0).toLocaleString()}
@@ -129,7 +147,7 @@ const CampaignsScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#10b981' }}>
               {campaigns.reduce((sum, c) => sum + (c.delivered || 0), 0).toLocaleString()}
@@ -139,7 +157,7 @@ const CampaignsScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#ef4444' }}>
               {campaigns.reduce((sum, c) => sum + (c.failed || 0), 0)}
@@ -155,21 +173,21 @@ const CampaignsScreen = () => {
       <Paper elevation={2} style={{ borderRadius: '12px' }}>
         <TableContainer
           sx={{
-      overflowX: "auto", // enables horizontal scroll
-      whiteSpace: "nowrap", // prevents wrapping
-      "&::-webkit-scrollbar": { height: "10px" }, // scrollbar height
-      "&::-webkit-scrollbar-thumb": {
-        backgroundColor: "#94a3b8", // scrollbar color
-        borderRadius: "8px"
-      },
-      "&::-webkit-scrollbar-track": {
-        backgroundColor: "#f1f5f9" // track color
-      }
-    }}
+            overflowX: "auto",
+            whiteSpace: "nowrap",
+            "&::-webkit-scrollbar": { height: "10px" },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#94a3b8",
+              borderRadius: "8px"
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#f1f5f9"
+            }
+          }}
         >
           <Table sx={{ minWidth: "1000px" }}>
             <TableHead>
-              <TableRow style={{ backgroundColor: '#f8fafc',  }}>
+              <TableRow style={{ backgroundColor: '#f8fafc' }}>
                 <TableCell style={{ fontWeight: 'bold' }}>Campaign</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Customer</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Status</TableCell>
