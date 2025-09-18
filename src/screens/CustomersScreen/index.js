@@ -94,44 +94,55 @@ const CustomersScreen = () => {
   return (
     <Box>
       {/* Header */}
-      <Box
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '2rem'
-        }}
-      >
-        <Typography
-          variant="h4"
-          style={{ fontWeight: 'bold', color: '#1f2937' }}
-        >
-          Customer Management
-        </Typography>
-        <Box style={{ display: 'flex', gap: '1rem' }}>
-          <Button
-            startIcon={<FileUpload />}
-            variant="outlined"
-            style={{ borderColor: '#10b981', color: '#10b981' }}
+      <Box mb={4}>
+        <Grid container alignItems="center" spacing={2}>
+          {/* Title */}
+          <Grid item xs={12} md={6}>
+            <Typography
+              variant="h4"
+              sx={{ fontWeight: 'bold', color: '#1f2937' }}
+            >
+              Customer Management
+            </Typography>
+          </Grid>
+
+          {/* Buttons */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: 'flex',
+              justifyContent: { xs: 'flex-start', md: 'flex-end' },
+              flexWrap: 'wrap',
+              gap: '1rem',
+              mt: { xs: 2, md: 0 }
+            }}
           >
-            Import CSV
-          </Button>
-          <Button
-            startIcon={<FileDownload />}
-            variant="outlined"
-            style={{ borderColor: '#10b981', color: '#10b981' }}
-          >
-            Export
-          </Button>
-          <Button
-            startIcon={<Add />}
-            variant="contained"
-            onClick={() => setAddDialogOpen(true)}
-            style={{ backgroundColor: '#10b981', color: 'white' }}
-          >
-            Add Customer
-          </Button>
-        </Box>
+            <Button
+              startIcon={<FileUpload />}
+              variant="outlined"
+              sx={{ borderColor: '#10b981', color: '#10b981' }}
+            >
+              Import CSV
+            </Button>
+            <Button
+              startIcon={<FileDownload />}
+              variant="outlined"
+              sx={{ borderColor: '#10b981', color: '#10b981' }}
+            >
+              Export
+            </Button>
+            <Button
+              startIcon={<Add />}
+              variant="contained"
+              onClick={() => setAddDialogOpen(true)}
+              sx={{ backgroundColor: '#10b981', color: 'white' }}
+            >
+              Add Customer
+            </Button>
+          </Grid>
+        </Grid>
       </Box>
 
       {/* Filters */}
