@@ -110,7 +110,7 @@ const DashboardHome = () => {
 
       <Grid container spacing={3}>
         {/* System Health */}
-        <Grid item xs={12} md={8} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={8} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px',height: '100%' }}>
             <Box style={{ display: 'flex',width:"50%", alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
               <Typography variant="h6" style={{ fontWeight: 'bold' }}>
@@ -176,7 +176,7 @@ const DashboardHome = () => {
         </Grid>
 
         {/* Recent Activities */}
-        <Grid item xs={12} md={4} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={4} sx={{ width: { xs: '100%', md: '47%', lg: '49%', xl: '43%', sm: '48%' } }}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', }}>
             <Box style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem' }}>
               <Notifications style={{ color: '#10b981', marginRight: '0.5rem' }} />
